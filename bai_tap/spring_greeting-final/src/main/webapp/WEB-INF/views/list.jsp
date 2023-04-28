@@ -16,9 +16,9 @@
   <input type="number" name="usd" placeholder="USD" value=""> $<br>
 
   <label>VND: </label>
-  <input type="number"  value="${result}" readonly> <br>
+  <input type="number"  value="${vnd}" readonly> vnd<br>
 
-  <button type="submit">change</button>
+  <button type="submit">Change</button>
 </form>
 </body>
 </html>
