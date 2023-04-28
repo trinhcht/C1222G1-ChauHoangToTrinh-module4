@@ -12,10 +12,8 @@
 </head>
 <body>
 <form action="/dictionary">
-<div class="input-group">
-    <input type="text" name="english" value="${english}">
-        <button type="submit">Result</button>
-</div>
+  <input type="text" name="english" value="${english}">
+  <button type="submit">Result</button>
 </form>
 <h1>Result : ${result}</h1>
 </body>
