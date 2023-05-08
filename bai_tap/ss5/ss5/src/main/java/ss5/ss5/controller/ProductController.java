@@ -1,11 +1,12 @@
-package ss4.bai1.controller;
+package ss5.ss5.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ss4.bai1.model.Product;
-import ss4.bai1.service.IProductService;
-import ss4.bai1.service.impl.ProductService;
+import ss5.ss5.model.Product;
+import ss5.ss5.service.IProductService;
+import ss5.ss5.service.impl.ProductService;
+
 
 @Controller
 @RequestMapping("/product")
