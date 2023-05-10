@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0e90d7d3-25d3-4c60-91b7-de5b2bdb0e56" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../bai1/src/main/resources/templates/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/repository/IBlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/repository/IBlogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/IBlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/IBlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/impl/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/impl/BlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai1/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/resources/templates/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PbPDIppICMYvCAx7NNglIpeg5D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e90d7d3-25d3-4c60-91b7-de5b2bdb0e56" name="Changes" comment="" />
+      <created>1683722691053</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683722691053</updated>
+      <workItem from="1683722692374" duration="731000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
