@@ -1,11 +1,9 @@
 package com.example.bai1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "blog_management")
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,17 +11,17 @@ public class Blog {
     private String name;
     private String category;
     private String author;
-    private String describe;
+    private String descrition;
 
     public Blog() {
     }
 
-    public Blog(int id, String name, String category, String author, String describe) {
+    public Blog(int id, String name, String category, String author, String descrition) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.author = author;
-        this.describe = describe;
+        this.descrition = descrition;
     }
 
     public int getId() {
@@ -58,11 +56,11 @@ public class Blog {
         this.author = author;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescrition() {
+        return descrition;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescrition(String descrition) {
+        this.descrition = descrition;
     }
 }
