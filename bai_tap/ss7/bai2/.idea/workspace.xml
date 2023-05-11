@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e03c273-f25f-4727-b096-e9e70ecb9535" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/blogDto/BlogDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/controller/BlogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/model/Blog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/repository/IBlogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/repository/ICategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/IBlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/ICategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/impl/BlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/impl/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/dto.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bai2/ServletInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +68,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\resources\templates" />
       <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2" />
       <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2\repository" />
       <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2\model" />
@@ -115,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683731399797</updated>
       <workItem from="1683731400979" duration="3461000" />
-      <workItem from="1683774286199" duration="637000" />
+      <workItem from="1683774286199" duration="1855000" />
     </task>
     <servers />
   </component>
