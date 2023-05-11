@@ -4,16 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e90d7d3-25d3-4c60-91b7-de5b2bdb0e56" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../bai1/src/main/resources/templates/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/repository/IBlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/repository/IBlogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/IBlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/IBlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/impl/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/java/com/example/bai1/service/impl/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai1/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bai1/src/main/resources/templates/list.html" afterDir="false" />
+    <list default="true" id="1e03c273-f25f-4727-b096-e9e70ecb9535" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/blogDto/BlogDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/controller/BlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/model/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/repository/IBlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/repository/ICategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/IBlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/ICategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/impl/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bai2/service/impl/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/dto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bai2/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo1/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +39,14 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -38,32 +61,61 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2PbPDIppICMYvCAx7NNglIpeg5D" />
+  <component name="ProjectId" id="2PbgrvBL1OJvK0xXhttpHj0Dqdw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Trinh/CodeGym/module4/bai_tap/ss7/bai2/src/main/resources/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "bee46afffc9eb9b5c5155bfc881c25af",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2" />
+      <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2\repository" />
+      <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2\model" />
+      <recent name="D:\Trinh\CodeGym\module4\bai_tap\ss7\bai2\src\main\java\com\example\bai2\controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Bai2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="bai2.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.bai2.Bai2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0e90d7d3-25d3-4c60-91b7-de5b2bdb0e56" name="Changes" comment="" />
-      <created>1683722691053</created>
+      <changelist id="1e03c273-f25f-4727-b096-e9e70ecb9535" name="Changes" comment="" />
+      <created>1683731399797</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1683722691053</updated>
-      <workItem from="1683722692374" duration="731000" />
+      <updated>1683731399797</updated>
+      <workItem from="1683731400979" duration="3461000" />
+      <workItem from="1683774286199" duration="637000" />
     </task>
     <servers />
   </component>
