@@ -28,14 +28,14 @@ public class UserController {
     @GetMapping("/create")
     public String showCreate(Model model) {
         model.addAttribute("userDTO", new UserDTO());
-        return "index";
+        return "create";
     }
     @PostMapping("/create")
     public String createForm(@Valid @ModelAttribute("userDTO") UserDTO userDTO,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "/index";
+            return "create";
         }
         User user = new User();
         BeanUtils.copyProperties(userDTO, user);
