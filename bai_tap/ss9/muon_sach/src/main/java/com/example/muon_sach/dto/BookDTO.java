@@ -52,7 +52,7 @@ public class BookDTO {
         return bookDTO;
     }
 
-    public void setBookDTO(Integer bookCode) {
+    public void setBookDTO(Integer bookDTO) {
         this.bookDTO = bookDTO;
     }
 

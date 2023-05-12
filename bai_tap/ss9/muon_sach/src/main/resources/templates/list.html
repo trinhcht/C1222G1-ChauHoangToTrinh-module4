@@ -1,10 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="../../bootstrap520/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../../themify-icons/themify-icons.css">
 </head>
 <body>
+<div class="container" style="margin-top: 5%">
+    <h2 style="text-align: center">Book code list</h2>
+    <button type="button" class="btn btn-success" style="margin-bottom: 2%">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-heart" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.965 12.695a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2Zm-.8 3.108.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125ZM8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+        </svg>
+        <a href="/code/create" style="text-decoration: none;color: white;"><i class="bi bi-cart4"> Create</i></a>
+    </button>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Book code</th>
+            <th scope="col">Name book</th>
+            <th scope="col">Content</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Name borrow</th>
+            <th scope="col">Day borrow</th>
+            <th scope="col">Fuction</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="code:${bookDTOList}">
+            <td th:text="${code.idBookDTO}"></td>
+            <td th:text="${code.bookDTO}"></td>
+            <td th:text="${code.book?.getName()}"></td>
+            <td th:text="${code.book?.getContent()}"></td>
+            <td th:text="${code.book?.getQuantity()}"></td>
+            <td th:text="${code.borrower?.getNameBorrower()}"></td>
+            <td th:text="${code.dayBorrow}"></td>
+            <td>
+                <a th:href="@{/code/update/{id}(id=${code.idBookDTO})}" class="btn btn-primary"><i
+                        class="fas fa-edit"></i></a>
+                <button type="button" th:attr="onclick=|deleteId('${code.idBookDTO}','${code.bookDTO}')|"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--  Modal xóa  <%-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/code/delete">
+                    <div class="modal-body">
+                        <label for="deleteId"></label>
+                        <input type="hidden" id="deleteId" name="deleteId">
+                        Do you want to delete <span id="deleteDTOBook"
+                                                    style="color: brown; font-weight: bold">${code.bookDTO}</span>
+                        ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function deleteId(idBookDTO, bookDTO) {
+            document.getElementById("deleteId").value = idBookDTO;
+            document.getElementById("deleteDTOBook").innerText = bookDTO;
+        }
+    </script>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

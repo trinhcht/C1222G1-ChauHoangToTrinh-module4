@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/borrow_book")
+@RequestMapping("/code")
 public class BookController {
     @Autowired
     @Qualifier("bookDTOService")
@@ -41,10 +41,10 @@ public class BookController {
     @PostMapping("/create")
     public String performCreate(@ModelAttribute BookDTO bookDTO) {
         iBookDTOService.save(bookDTO);
-        return "redirect:/borrow_book";
+        return "redirect:/code";
     }
 
-    @GetMapping("/update/{idBookDTO")
+    @GetMapping("/update/{idBookDTO}")
     public String showUpdate(@PathVariable int idBookDTO, Model model) {
         model.addAttribute("bookList", iBookService.findAll());
         model.addAttribute("borrowerList", iBorrowerService.findAll());
@@ -55,13 +55,13 @@ public class BookController {
     @PostMapping("/update")
     public String performUpdate(@ModelAttribute BookDTO bookDTO) {
         iBookDTOService.save(bookDTO);
-        return "redirect:/borrow_book";
+        return "redirect:/code";
     }
 
     @GetMapping("/delete")
     public String performDelete(@RequestParam(required = false) Integer deleteId) {
         iBookDTOService.delete(deleteId);
-        return "redirect:/borrow_book";
+        return "redirect:/code";
     }
 
     @GetMapping("/borrow")
@@ -75,12 +75,12 @@ public class BookController {
         }else {
             iBookService.borrow(id,idBorrower);
         }
-        return "redirect:/borrow_book";
+        return "redirect:/code";
     }
 
     @GetMapping("/return")
     public String returnBook(@RequestParam(required = false) Integer dtoBook) {
-        return "redirect:/borrow_book";
+        return "redirect:/code";
     }
     @ExceptionHandler(Exception.class)
     public String handel(){
