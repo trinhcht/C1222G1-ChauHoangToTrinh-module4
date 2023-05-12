@@ -1,4 +1,4 @@
-package com.example.bai1;
+package com.example.form;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

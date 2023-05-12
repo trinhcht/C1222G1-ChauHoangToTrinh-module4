@@ -1,8 +1,8 @@
-package com.example.bai1.controller;
+package com.example.form.controller;
 
-import com.example.bai1.dto.UserDTO;
-import com.example.bai1.model.User;
-import com.example.bai1.service.IUserService;
+import com.example.form.dto.UserDTO;
+import com.example.form.model.User;
+import com.example.form.service.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

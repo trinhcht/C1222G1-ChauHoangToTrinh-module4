@@ -1,8 +1,8 @@
-package com.example.bai1.service.imlp;
+package com.example.form.service.imlp;
 
-import com.example.bai1.model.User;
-import com.example.bai1.repository.IUserRepository;
-import com.example.bai1.service.IUserService;
+import com.example.form.model.User;
+import com.example.form.repository.IUserRepository;
+import com.example.form.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

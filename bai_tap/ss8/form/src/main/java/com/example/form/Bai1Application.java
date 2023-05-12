@@ -1,4 +1,4 @@
-package com.example.bai1;
+package com.example.form;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

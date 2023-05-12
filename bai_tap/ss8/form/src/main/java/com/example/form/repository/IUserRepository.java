@@ -1,6 +1,6 @@
-package com.example.bai1.repository;
+package com.example.form.repository;
 
-import com.example.bai1.model.User;
+import com.example.form.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IUserRepository extends JpaRepository<User,Integer> {

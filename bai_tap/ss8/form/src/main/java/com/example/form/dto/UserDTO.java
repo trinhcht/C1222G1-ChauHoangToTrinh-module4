@@ -1,29 +1,36 @@
-package com.example.bai1.model;
-import javax.persistence.*;
+package com.example.form.dto;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
+import javax.validation.constraints.*;
 
-@Entity
-@Table(name = "form")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+public class UserDTO implements Validator {
     private Integer id;
-    @Column(name = "first_name", columnDefinition = "VARCHAR(45)", nullable = false)
+
+    @NotBlank(message = "First name cannot be empty")
+    @Size(min = 5, max = 45, message = "Input more than 5 character and less than 45 character")
     private String firstName;
-    @Column(name = "last_name", columnDefinition = "VARCHAR(45)", nullable = false)
+
+    @NotBlank(message = "Last name cannot be empty")
+    @Size(min = 5, max = 45, message = "Input more than 5 character and less than 45 character")
     private String lastName;
-    @Column(name = "phone_number")
+
+    @NotBlank(message = "Phone number cannot be empty")
+    @Pattern(regexp = "^\\d{2}-0\\d{9}$", message = "Incorrect phone number syntax. Example: 0xxxxxxxxx")
     private String phoneNumber;
-    @Column(name = "age")
+
+    @NotNull(message = "Age cannot be empty")
+    @Min(18)
     private Integer age;
-    @Column(name = "email")
+
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Incorrect email syntax example xxx@xxx.xxx (xxx: (A-Z)or (a-z) or number or character special)")
     private String email;
 
-    public User() {
+    public UserDTO() {
     }
 
-    public User(Integer id, String firstName, String lastName, String phoneNumber, Integer age, String email) {
+    public UserDTO(Integer id, String firstName, String lastName, String phoneNumber, Integer age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -79,5 +86,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-}
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
+    }
+}
