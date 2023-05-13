@@ -1,57 +1,63 @@
 package com.example.muon_sach.service.impl;
-
-import com.example.muon_sach.dto.BookDTO;
+import com.example.muon_sach.exception.QuantityLowerThanZeroException;
+import com.example.muon_sach.exception.WrongCodeException;
 import com.example.muon_sach.model.Book;
 import com.example.muon_sach.model.Borrower;
-import com.example.muon_sach.repository.IBookDTORepository;
 import com.example.muon_sach.repository.IBookRepository;
 import com.example.muon_sach.repository.IBorrowerRepository;
 import com.example.muon_sach.service.IBookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
-@Service("bookService")
+@Service("")
 public class BookService implements IBookService {
-    @Autowired
-    private IBookRepository iBookRepository;
-    @Autowired
-    private IBookDTORepository iBookCodeRepository;
-    @Autowired
-    private IBorrowerRepository iBorrowerRepository;
+    private final
+    IBookRepository bookRepository;
 
-    @Override
-    public Book findById(int id) {
-        return iBookRepository.findById(id);
+    private final
+    IBorrowerRepository borrowerRepository;
+
+    public BookService(IBookRepository bookRepository, IBorrowerRepository borrowerRepository) {
+        this.bookRepository = bookRepository;
+        this.borrowerRepository = borrowerRepository;
     }
 
     @Override
-    public List<Book> findAll() {
-        return iBookRepository.findAll();
+    public List<Book> findAllBook() {
+        return (List<Book>) bookRepository.findAll();
     }
 
     @Override
-    public void borrow(int id, int idBorrower) {
-        Book book = iBookRepository.findById(id);
+    public boolean borrowerBook(Borrower borrower) throws WrongCodeException {
+        Book book = bookRepository.findById(borrower.getBook().getId()).orElse(null);
+        if (book == null) {
+            return false;
+        }
+        if (book.getQuantity() <= 0) {
+            throw new WrongCodeException("Số lượng sách đã hết");
+        }
         book.setQuantity(book.getQuantity() - 1);
-        int codeBook = (int) Math.floor((Math.random() * 89999) + 10000);
-        Borrower borrower = iBorrowerRepository.findById(idBorrower);
-
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setBookDTO(codeBook);
-        bookDTO.setBook(book);
-        bookDTO.setDayBorrow(Date.from(Instant.now()).toString());
-        bookDTO.setBorrower(borrower);
-        iBookCodeRepository.save(bookDTO);
-        iBookRepository.save(book);
+        bookRepository.save(book);
+        borrowerRepository.save(borrower);
+        return true;
     }
 
     @Override
-    public void returnBook(Book book) {
+    public boolean returnBook(String code) throws QuantityLowerThanZeroException {
+        Borrower borrower = borrowerRepository.findByCode(code);
+        if (borrower == null) {
+            throw new QuantityLowerThanZeroException("Mã mượn sách không hợp lệ");
+        }
+
+        Book book = bookRepository.findById(borrower.getBook().getId()).orElse(null);
+        if (book == null) {
+            return false;
+        }
+
         book.setQuantity(book.getQuantity() + 1);
-        iBookRepository.save(book);
+        bookRepository.save(book);
+        borrowerRepository.deleteById(borrower.getId());
+        return true;
     }
 }

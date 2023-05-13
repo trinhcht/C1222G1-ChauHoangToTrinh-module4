@@ -7,33 +7,46 @@ import javax.persistence.*;
 public class Borrower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_borrower")
-    private Integer idBorrower;
+    private Integer id;
+    private String name;
+    private String code;
 
-    @Column(name = "name_borrower")
-    private String nameBorrower;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     public Borrower() {
     }
 
-    public Borrower(Integer idBorrower, String nameBorrower) {
-        this.idBorrower = idBorrower;
-        this.nameBorrower = nameBorrower;
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getIdBorrower() {
-        return idBorrower;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setIdBorrower(Integer idBorrower) {
-        this.idBorrower = idBorrower;
+    public String getName() {
+        return name;
     }
 
-    public String getNameBorrower() {
-        return nameBorrower;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNameBorrower(String nameBorrower) {
-        this.nameBorrower = nameBorrower;
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

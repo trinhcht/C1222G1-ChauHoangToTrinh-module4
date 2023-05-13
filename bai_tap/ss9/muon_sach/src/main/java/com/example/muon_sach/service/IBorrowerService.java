@@ -5,6 +5,7 @@ import com.example.muon_sach.model.Borrower;
 import java.util.List;
 
 public interface IBorrowerService {
-    List<Borrower> findAll();
-    Borrower findById(int idBorrower);
+    List<Borrower> findAllBorrower();
+
+    String codeBorrower();
 }

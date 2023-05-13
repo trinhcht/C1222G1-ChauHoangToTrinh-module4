@@ -1,89 +1,56 @@
 package com.example.muon_sach.controller;
-
-import com.example.muon_sach.dto.BookDTO;
 import com.example.muon_sach.exception.QuantityLowerThanZeroException;
+import com.example.muon_sach.exception.WrongCodeException;
 import com.example.muon_sach.model.Borrower;
-import com.example.muon_sach.service.IBookDTOService;
 import com.example.muon_sach.service.IBookService;
 import com.example.muon_sach.service.IBorrowerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/code")
 public class BookController {
-    @Autowired
-    @Qualifier("bookDTOService")
-    private IBookDTOService iBookDTOService;
-    @Autowired
-    private IBookService iBookService;
-    @Autowired
-    private IBorrowerService iBorrowerService;
+    private final IBookService bookService;
 
-    @GetMapping("")
-    public String showList(Model model) {
-        model.addAttribute("bookDTOList", iBookDTOService.findAll());
+    private final IBorrowerService borrowerService;
+
+    public BookController(IBookService bookService, IBorrowerService borrowerService) {
+        this.bookService = bookService;
+        this.borrowerService = borrowerService;
+    }
+
+    @GetMapping("books")
+    public String findAllBook(Model model) {
+        model.addAttribute("books", bookService.findAllBook());
+        model.addAttribute("borrower", new Borrower());
         return "/list";
     }
 
-    @GetMapping("/create")
-    public String showCreate(Model model) {
-        model.addAttribute("bookList", iBookService.findAll());
-        model.addAttribute("borrowerList", iBorrowerService.findAll());
-        model.addAttribute("bookDTOList", new BookDTO());
-        return "/create";
-    }
-
-    @PostMapping("/create")
-    public String performCreate(@ModelAttribute BookDTO bookDTO) {
-        iBookDTOService.save(bookDTO);
-        return "redirect:/code";
-    }
-
-    @GetMapping("/update/{idBookDTO}")
-    public String showUpdate(@PathVariable int idBookDTO, Model model) {
-        model.addAttribute("bookList", iBookService.findAll());
-        model.addAttribute("borrowerList", iBorrowerService.findAll());
-        model.addAttribute("bookCodeList", iBookDTOService.findById(idBookDTO));
-        return "update";
-    }
-
-    @PostMapping("/update")
-    public String performUpdate(@ModelAttribute BookDTO bookDTO) {
-        iBookDTOService.save(bookDTO);
-        return "redirect:/code";
-    }
-
-    @GetMapping("/delete")
-    public String performDelete(@RequestParam(required = false) Integer deleteId) {
-        iBookDTOService.delete(deleteId);
-        return "redirect:/code";
-    }
-
-    @GetMapping("/borrow")
-    public String borrow(@RequestParam(name = "idBook") Integer id, @RequestParam(name = "idBorrower") Integer idBorrower, RedirectAttributes redirectAttributes) throws QuantityLowerThanZeroException {
-        Borrower borrower = iBorrowerService.findById(idBorrower);
-        if (borrower == null) {
-            redirectAttributes.addAttribute("msg", "Borrower not found");
-            return "redirect:/list";
-        }else if (iBookService.findById(id).getQuantity()==0){
-            throw new QuantityLowerThanZeroException();
-        }else {
-            iBookService.borrow(id,idBorrower);
+    @PostMapping("/borrow-book")
+    public String borrowBook(@ModelAttribute("borrower") Borrower borrower, RedirectAttributes redirectAttributes) throws  WrongCodeException {
+        String code = borrowerService.codeBorrower();
+        borrower.setCode(code);
+        if (bookService.borrowerBook(borrower)){
+            redirectAttributes.addFlashAttribute("mess", "Mượn sách thành công, " + "mã mượn sách là: " + code);
+            redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
+        } else {
+            redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
+            redirectAttributes.addFlashAttribute("mess", "Mượn sách thất bại");
         }
-        return "redirect:/code";
+        return "/list";
     }
 
-    @GetMapping("/return")
-    public String returnBook(@RequestParam(required = false) Integer dtoBook) {
-        return "redirect:/code";
-    }
-    @ExceptionHandler(Exception.class)
-    public String handel(){
-        return "/error";
+    @GetMapping("/return-book")
+    public String returnBook(RedirectAttributes redirectAttributes, @RequestParam("code") String code) throws QuantityLowerThanZeroException {
+        if (bookService.returnBook(code)) {
+            redirectAttributes.addFlashAttribute("mess", "Trả sách thành công");
+            redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
+        } else {
+            redirectAttributes.addFlashAttribute("mess", "Trả sách không thành công");
+            redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
+        }
+        return "redirect:/books";
+
     }
 }

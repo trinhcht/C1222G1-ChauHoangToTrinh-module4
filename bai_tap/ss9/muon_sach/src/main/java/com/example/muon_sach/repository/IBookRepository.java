@@ -1,13 +1,9 @@
 package com.example.muon_sach.repository;
 
 import com.example.muon_sach.model.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
 
-public interface IBookRepository extends JpaRepository<Book, Integer> {
-    Book findById(int id);
-
-    List<Book> findAll();
+public interface IBookRepository extends PagingAndSortingRepository<Book, Integer> {
 
 }

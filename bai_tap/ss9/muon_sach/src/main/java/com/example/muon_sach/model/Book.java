@@ -1,35 +1,29 @@
 package com.example.muon_sach.model;
-
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
+import java.util.Set;
 
 
-@Entity(name = "book")
+@Entity
 @Table(name = "book")
-public class Book implements Validator {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "name_book")
     private String name;
-    private String content;
-
-    @Min(value = 0)
     private Integer quantity;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private Set<Borrower> borrowers;
 
     public Book() {
     }
 
-    public Book(Integer id, String name, String content, Integer quantity) {
-        this.id = id;
-        this.name = name;
-        this.content = content;
-        this.quantity = quantity;
+    public Set<Borrower> getBorrowers() {
+        return borrowers;
+    }
+
+    public void setBorrowers(Set<Borrower> borrowers) {
+        this.borrowers = borrowers;
     }
 
     public Integer getId() {
@@ -48,29 +42,11 @@ public class Book implements Validator {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public Integer getQuantity() {
         return quantity;
     }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-
     }
 }

@@ -10,16 +10,20 @@ import java.util.List;
 
 @Service("borrowerService")
 public class BorrowerService implements IBorrowerService {
-    @Autowired
-    private IBorrowerRepository iBorrowerRepository;
+    private final
+    IBorrowerRepository borrowerRepository;
 
-    @Override
-    public List<Borrower> findAll() {
-        return iBorrowerRepository.findAll();
+    public BorrowerService(IBorrowerRepository borrowerRepository) {
+        this.borrowerRepository = borrowerRepository;
     }
 
     @Override
-    public Borrower findById(int idBorrower) {
-        return iBorrowerRepository.findById(idBorrower);
+    public List<Borrower> findAllBorrower() {
+        return borrowerRepository.findAll();
+    }
+
+    @Override
+    public String codeBorrower() {
+        return String.format("%05d", (int) (Math.random() * 100000));
     }
 }

@@ -1,7 +1,7 @@
 package com.example.muon_sach.exception;
 
 public class WrongCodeException extends Exception{
-    public WrongCodeException() {
-        super();
+    public WrongCodeException(String mess) {
+        super(mess);
     }
 }
