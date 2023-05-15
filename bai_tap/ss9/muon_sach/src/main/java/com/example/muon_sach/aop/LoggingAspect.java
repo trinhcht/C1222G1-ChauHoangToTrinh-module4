@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Component
 @Aspect
 public class LoggingAspect {
+    private int count = 0;
     @Pointcut("execution(* com.example.muon_sach.controller" +
             ".BookController.borrowBook(..))||execution(* com.example" +
             ".muon_sach.controller.BookController.returnBook(..))")
@@ -20,8 +21,9 @@ public class LoggingAspect {
 
     @After(value = "getMethodBookController()")
     public void printConsoleBook(JoinPoint joinPoint) {
+        count++;
         System.out.println("Bạn đã vào " + joinPoint
-                .getSignature().getName() + " vào lúc : " + LocalDateTime.now());
+                .getSignature().getName() + " vào lúc : " + LocalDateTime.now() + count);
     }
 
     @Pointcut("execution(* com.example.muon_sach.controller" +
