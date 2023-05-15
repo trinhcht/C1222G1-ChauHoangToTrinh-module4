@@ -27,6 +27,7 @@ public class BookController {
         return "/list";
     }
 
+
     @PostMapping("/borrow-book")
     public String borrowBook(@ModelAttribute("borrower") Borrower borrower, RedirectAttributes redirectAttributes) throws  WrongCodeException {
         String code = borrowerService.codeBorrower();
@@ -35,10 +36,10 @@ public class BookController {
             redirectAttributes.addFlashAttribute("mess", "Mượn sách thành công, " + "mã mượn sách là: " + code);
             redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
         } else {
+            redirectAttributes.addFlashAttribute("mess", "Sách đã hết. Mượn sách thất bại");
             redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
-            redirectAttributes.addFlashAttribute("mess", "Mượn sách thất bại");
         }
-        return "/list";
+        return "redirect:/books";
     }
 
     @GetMapping("/return-book")

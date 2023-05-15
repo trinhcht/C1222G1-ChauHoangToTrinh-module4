@@ -36,11 +36,12 @@ public class BookService implements IBookService {
         }
         if (book.getQuantity() <= 0) {
             throw new WrongCodeException("Số lượng sách đã hết");
+        } else {
+            book.setQuantity(book.getQuantity() - 1);
+            bookRepository.save(book);
+            borrowerRepository.save(borrower);
+            return true;
         }
-        book.setQuantity(book.getQuantity() - 1);
-        bookRepository.save(book);
-        borrowerRepository.save(borrower);
-        return true;
     }
 
     @Override

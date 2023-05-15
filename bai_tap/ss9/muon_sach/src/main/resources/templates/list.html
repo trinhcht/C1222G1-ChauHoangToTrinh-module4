@@ -37,7 +37,7 @@
         </div>
     </div>
 </nav>
-<p th:text="${mess}"></p>
+<p th:text="${mes}"></p>
 <table class="table table-striped">
     <tr>
         <td>STT</td>
@@ -71,35 +71,31 @@
             <form th:action="@{borrow-book}" th:object="${borrower}" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="idBook" class="form-label">Id sách</label>
-                        <span th:text="*{book.id}" class="form-control" id="idBook"
-                               aria-describedby="emailHelp">
-                        </span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="nameBook" class="form-label">Tên sách</label>
-                        <span type="text" th:text="*{book.name}" class="form-control" id="nameBook"
-                               aria-describedby="emailHelp">
-                        </span>
-
+                        <label for="infoId" class="form-label">Id sách</label>
+                        <input th:field="*{book}" class="form-control" id="infoId"
+                               aria-describedby="emailHelp" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="quantity" class="form-label">Số lượng còn lại</label>
-                        <span type="text" class="form-control" id="quantity"
+                        <label for="infoName" class="form-label">Tên sách</label>
+                        <span type="text" class="form-control" id="infoName"
                                aria-describedby="emailHelp">
-                        </span>
+                            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="infoQuantity" class="form-label">Số lượng</label>
+                        <input type="text" class="form-control" id="infoQuantity"
+                               aria-describedby="emailHelp" readonly>
                     </div>
                     <input type="hidden" name="id">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nhập vào họ tên để mượn sách</label>
                         <input type="text" th:field="*{name}" class="form-control" id="name"
-                               aria-describedby="emailHelp">
+                               aria-describedby="emailHelp" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button style="margin-left: 30px;" type="submit" class="btn btn-primary">Mượn sách</button>
+                    <button style="margin-left: 25px;" type="submit" class="btn btn-primary">Mượn sách</button>
                 </div>
             </form>
         </div>
@@ -114,8 +110,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 <script>
     function infoBook(id, name, quantity) {
@@ -125,13 +121,6 @@
         console.log(`Book ID: ${id}, Name: ${name}, Quantity: ${quantity}`);
     }
 
-    // const borrowButton = document.querySelector('.btn-primary');
-    // borrowButton.addEventListener('click', () => {
-    //     const bookId = book.getId();
-    //     const bookName = book.getName();
-    //     const bookQuantity = book.getQuantity();
-    //     infoBook(bookId, bookName, bookQuantity);
-    // });
 </script>
 
 </body>
