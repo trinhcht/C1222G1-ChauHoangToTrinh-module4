@@ -32,11 +32,12 @@ public class BookController {
     public String borrowBook(@ModelAttribute("borrower") Borrower borrower, RedirectAttributes redirectAttributes) throws  WrongCodeException {
         String code = borrowerService.codeBorrower();
         borrower.setCode(code);
+        redirectAttributes.addFlashAttribute("mess", "Sách đã hết. Mượn sách thất bại");
         if (bookService.borrowerBook(borrower)){
             redirectAttributes.addFlashAttribute("mess", "Mượn sách thành công, " + "mã mượn sách là: " + code);
             redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
         } else {
-            redirectAttributes.addFlashAttribute("mess", "Sách đã hết. Mượn sách thất bại");
+//            redirectAttributes.addFlashAttribute("mess", "Sách đã hết. Mượn sách thất bại");
             redirectAttributes.addFlashAttribute("books", bookService.findAllBook());
         }
         return "redirect:/books";
@@ -53,5 +54,15 @@ public class BookController {
         }
         return "redirect:/books";
 
+    }
+
+    @ExceptionHandler(WrongCodeException.class)
+    public String WrongCodeException(){
+        return "/quantity";
+    }
+
+    @ExceptionHandler(QuantityLowerThanZeroException.class)
+    public String QuantityLowerThanZeroException(){
+        return "/errorReturn";
     }
 }
