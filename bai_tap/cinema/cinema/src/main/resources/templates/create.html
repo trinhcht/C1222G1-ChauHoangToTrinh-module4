@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+
+<h2>Thêm mới phim</h2>
+<a href="/cinema">Trở về trang chủ!</a>
+<form action="/cinema/save" method="post" th:object="${SuatChieuDTO}">
+    <div class="input-group">
+        <label for="code">Code</label>
+        <input type="text"
+               class="form-control" name="code" id="code" aria-describedby="helpId" placeholder="" th:field="*{code}">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{code}"></span>
+    </div>
+    <div class="input-group">
+        <label for="ngayChieu">Ngày chiếu</label>
+        <input type="date"
+               class="form-control" name="ngayChieu" id="ngayChieu" aria-describedby="helpId" placeholder="" th:field="*{ngayChieu}">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{ngayChieu}"></span>
+    </div>
+    <div class="input-group">
+        <label for="soLuongVe">Số lượng vé</label>
+        <input type="number"
+               class="form-control" name="soLuongVe" id="soLuongVe" aria-describedby="helpId" placeholder="" th:field="*{soLuongVe}">
+        <span th:if="${#fields.hasErrors()}" th:errors="*{soLuongVe}"></span>
+    </div>
+    <select th:field="*{phim}" >
+        <option th:each="object,inerStat :${phimList}" th:value="${object.id}">
+            <p th:text="${object.tenPhim}"></p>
+        </option>
+    </select>
+    <button type="submit">Lưu</button>
+</form>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>

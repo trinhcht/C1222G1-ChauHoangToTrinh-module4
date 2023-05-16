@@ -8,4 +8,5 @@ public interface IBorrowerService {
     List<Borrower> findAllBorrower();
 
     String codeBorrower();
+    List<Borrower> findByCode(String code);
 }

@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
 
 public interface IBorrowerRepository extends JpaRepository<Borrower,Integer> {
     @Query(value = "select * from borrower where code= :code1", nativeQuery = true)

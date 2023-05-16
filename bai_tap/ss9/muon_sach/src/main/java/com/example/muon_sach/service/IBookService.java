@@ -5,8 +5,10 @@ import com.example.muon_sach.exception.WrongCodeException;
 import com.example.muon_sach.model.Book;
 import com.example.muon_sach.model.Borrower;
 
+import java.util.List;
+
 public interface IBookService {
-    Iterable<Book> findAllBook();
+    List<Book> findAllBook();
 
     boolean borrowerBook(Borrower borrower) throws WrongCodeException;
 
