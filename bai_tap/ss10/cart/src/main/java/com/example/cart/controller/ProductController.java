@@ -29,7 +29,7 @@ public class ProductController {
         return "/list";
     }
 
-    @GetMapping("/{id}/detail")
+    @GetMapping("/detail/{id}")
     public String showDetail (@RequestParam Long id, Model model) {
         model.addAttribute("productList", productService.findById(id));
         return "/detail";

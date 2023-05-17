@@ -14,9 +14,9 @@
 <div class="card" style="width: 18rem;" th:object="${productList}">
     <img th:src="${productList.imgURL}" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title" th:field="*{name}"></h5>
-        <p class="card-text" th:field="*{price}"></p>
-        <a class="btn btn-primary" th:href="@{/product/add(id = ${productList.id}, action='list')}">Add To Cart</a>
+        <h5 class="card-title" th:field="*{productList.name}"></h5>
+        <p class="card-text" th:field="*{productList.price}"></p>
+        <a class="btn btn-primary" th:href="@{/product/add/__${productList.id}__(action='list')}">Add To Cart</a>
     </div>
 </div>
 <script th:inline="javascript">
