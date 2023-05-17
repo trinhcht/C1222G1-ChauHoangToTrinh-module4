@@ -11,12 +11,12 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<div class="card" style="width: 18rem;" th:object="${productDTO}">
-    <img th:src="${productDTO.imgURL}" class="card-img-top" alt="...">
+<div class="card" style="width: 18rem;" th:object="${productList}">
+    <img th:src="${productList.imgURL}" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title" th:text="${productDTO.name}"></h5>
-        <p class="card-text" th:text="${#numbers.formatCurrency(productDTO.price)}"></p>
-        <a class="btn btn-primary" th:href="@{/product/add(id = ${productDTO.id}, action='list')}">Add To Cart</a>
+        <h5 class="card-title" th:field="*{name}"></h5>
+        <p class="card-text" th:field="*{price}"></p>
+        <a class="btn btn-primary" th:href="@{/product/add(id = ${productList.id}, action='list')}">Add To Cart</a>
     </div>
 </div>
 <script th:inline="javascript">

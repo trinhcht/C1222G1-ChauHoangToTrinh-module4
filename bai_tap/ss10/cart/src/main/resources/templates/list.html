@@ -16,14 +16,14 @@
 </p>
 <div class="container mb-5">
     <div class="row">
-        <div class="col-4 text-center" th:each="productCartDTO : ${productCartDTOList}">
-            <a th:href="@{/product/detail(id=${productCartDTO.id})}" target="_blank">
-                <img th:src="${productCartDTO.imgURL}" alt=""/>
+        <div class="col-4 text-center" th:each="productList : ${productList}">
+            <a th:href="@{/product/detail(id=${productList.id})}" target="_blank">
+                <img th:src="${productList.imgURL}" alt=""/>
             </a>
-            <p th:text="${productCartDTO.name}"></p>
-            <p th:text="${#numbers.formatCurrency(productCartDTO.price)}"></p>
-            <td><a th:href="@{/product/add(id = ${productCartDTO.id}, action='add')}">Add To Cart</a></td>
-            <td><a th:href="@{/product/detail(id = ${productCartDTO.id})}">Detail</a></td>
+            <p th:text="${productList.name}"></p>
+            <p th:text="${#numbers.formatCurrency(productList.price)}"></p>
+            <td><a th:href="@{/product/add(id = ${productList.id}, action='add')}">Add To Cart</a></td>
+            <td><a th:href="@{/product/{id}/detail(id = ${productList.id})}">Detail</a></td>
         </div>
     </div>
 </div>

@@ -22,13 +22,13 @@ public class ProductController {
 
     @GetMapping("")
     public String showProduct(Model model) {
-        model.addAttribute("productCartDTOList", productService.findAllCart());
+        model.addAttribute("productList", productService.findAllCart());
         return "/list";
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/{id}/detail")
     public String showDetail (@RequestParam Integer id, Model model) {
-        model.addAttribute("productDTO", productService.findById(id));
+        model.addAttribute("productList", productService.findById(id));
         return "/detail";
     }
 

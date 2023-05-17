@@ -43,9 +43,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductDTO findById(int id) {
-        ProductDTO productDTO = new ProductDTO();
-        BeanUtils.copyProperties(productRepository.findById(id).get(), productDTO);
-        return productDTO;
+    public Product findById(int id) {
+     return productRepository.findById(id).get();
     }
 }

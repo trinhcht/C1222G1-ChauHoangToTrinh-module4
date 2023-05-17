@@ -10,14 +10,17 @@ public class Product {
     private String name;
     private double price;
     private String description;
+    private String imgURL;
 
     public Product() {
     }
 
-    public Product(String name, double price, String description) {
+    public Product(Long id, String name, double price, String description, String imgURL) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.imgURL = imgURL;
     }
 
     public Long getId() {
@@ -40,13 +43,6 @@ public class Product {
         return price;
     }
 
-    public Product(Long id, String name, double price, String description ) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -59,4 +55,11 @@ public class Product {
         this.description = description;
     }
 
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 }
