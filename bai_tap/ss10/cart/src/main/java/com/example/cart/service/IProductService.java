@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IProductService {
     List<ProductDTO> findAll();
-    List<CartDTO> findAllUrl();
+    List<CartDTO> findAllCart();
     ProductDTO findById (int id);
 }

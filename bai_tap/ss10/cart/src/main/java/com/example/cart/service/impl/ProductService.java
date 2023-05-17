@@ -30,7 +30,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<CartDTO> findAllUrl() {
+    public List<CartDTO> findAllCart() {
         List<Product> productList = productRepository.findAll();
         List<CartDTO> productCartDTOList = new ArrayList<>();
         CartDTO cartDTO;

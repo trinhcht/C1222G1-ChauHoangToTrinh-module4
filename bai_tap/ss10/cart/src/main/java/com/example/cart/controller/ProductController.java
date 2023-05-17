@@ -22,7 +22,7 @@ public class ProductController {
 
     @GetMapping("")
     public String showProduct(Model model) {
-        model.addAttribute("productCartDTOList", productService.findAllUrl());
+        model.addAttribute("productCartDTOList", productService.findAllCart());
         return "/list";
     }
 
@@ -32,11 +32,11 @@ public class ProductController {
         return "/detail";
     }
 
-    @GetMapping("/shop")
-    public String showShop (Model model) {
-        model.addAttribute("productDTOList", productService.findAll());
-        return "/shop";
-    }
+//    @GetMapping("/list")
+//    public String showShop (Model model) {
+//        model.addAttribute("productDTOList", productService.findAll());
+//        return "/list";
+//    }
 
     @GetMapping("/add")
     public String addToCart (@RequestParam (required = false) Integer id,
