@@ -23,7 +23,7 @@
             <p th:text="${productCartDTO.name}"></p>
             <p th:text="${#numbers.formatCurrency(productCartDTO.price)}"></p>
             <td><a th:href="@{/product/add(id = ${productCartDTO.id}, action='add')}">Add To Cart</a></td>
-            <td><a th:href="@{/product/detail(id = ${productCartDTO.id}, action = 'detail')}">Detail</a></td>
+            <td><a th:href="@{/product/detail(id = ${productCartDTO.id})}">Detail</a></td>
         </div>
     </div>
 </div>
