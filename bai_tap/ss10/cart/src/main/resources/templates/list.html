@@ -22,8 +22,8 @@
             </a>
             <p th:text="${productList.name}"></p>
             <p th:text="${#numbers.formatCurrency(productList.price)}"></p>
-            <td><a th:href="@{/product/add(id = ${productList.id}, action='add')}">Add To Cart</a></td>
-            <td><a th:href="@{/product/{id}/detail(id = ${productList.id})}">Detail</a></td>
+            <td><a th:href="@{/product/add/__${productList.id}__(action='list')}">Add To Cart</a></td>
+<!--            <td><a th:href="@{/product/{id}/detail(id = ${productList.id})}">Detail</a></td>-->
         </div>
     </div>
 </div>
@@ -32,6 +32,7 @@
         style: 'currency',
         currency: 'VND',
     });
+    debugger
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

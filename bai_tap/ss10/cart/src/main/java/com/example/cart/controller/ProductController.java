@@ -2,11 +2,14 @@ package com.example.cart.controller;
 
 import com.example.cart.dto.ProductDTO;
 import com.example.cart.model.Cart;
+import com.example.cart.model.Product;
 import com.example.cart.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @SessionAttributes("cart")
@@ -27,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/detail")
-    public String showDetail (@RequestParam Integer id, Model model) {
+    public String showDetail (@RequestParam Long id, Model model) {
         model.addAttribute("productList", productService.findById(id));
         return "/detail";
     }
@@ -38,35 +41,28 @@ public class ProductController {
 //        return "/list";
 //    }
 
-    @GetMapping("/add")
-    public String addToCart (@RequestParam (required = false) Integer id,
-                             @RequestParam (required = false) String action,
-                             @ModelAttribute Cart cart) {
-        ProductDTO productDTO = productService.findById(id);
-        if (productDTO == null) {
+    @GetMapping("/add/{id}")
+    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+        Optional<Product> productOptional = productService.findById(id);
+        if (!productOptional.isPresent()) {
             return "/error";
         }
         if (action.equals("show")) {
-            cart.addProduct(productDTO);
+            cart.addProduct(productOptional.get());
             return "redirect:/cart";
         }
-        cart.addProduct(productDTO);
+        cart.addProduct(productOptional.get());
         return "redirect:/product";
     }
 
-    @GetMapping("/decrease")
-    public String removeFromCart (@RequestParam (required = false) Integer id,
-                                  @RequestParam (required = false) String action,
+    @GetMapping("/decrease/{id}")
+    public String removeFromCart (@PathVariable Long id,
                                   @ModelAttribute Cart cart) {
-        ProductDTO productDTO = productService.findById(id);
-        if (productDTO == null) {
+        Optional<Product> productOptional = productService.findById(id);
+        if (!productOptional.isPresent()) {
             return "/error";
         }
-        if (action.equals("show1")) {
-            cart.removeProduct(productDTO);
+            cart.removeProduct(productOptional.get());
             return "redirect:/cart";
-        }
-        cart.removeProduct(productDTO);
-        return "redirect:/product";
     }
 }

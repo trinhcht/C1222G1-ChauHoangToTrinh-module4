@@ -1,5 +1,6 @@
 package com.example.cart.model;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product")
@@ -61,5 +62,18 @@ public class Product {
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

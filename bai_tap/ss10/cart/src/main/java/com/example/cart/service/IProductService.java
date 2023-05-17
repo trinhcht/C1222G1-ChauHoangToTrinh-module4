@@ -5,9 +5,10 @@ import com.example.cart.dto.ProductDTO;
 import com.example.cart.model.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProductService {
     List<ProductDTO> findAll();
     List<CartDTO> findAllCart();
-    Product findById (int id);
+    Optional<Product> findById(Long id);
 }

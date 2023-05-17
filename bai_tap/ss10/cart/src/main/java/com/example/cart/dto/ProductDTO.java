@@ -3,7 +3,7 @@ package com.example.cart.dto;
 import java.util.Objects;
 
 public class ProductDTO {
-    private Integer id;
+    private Long id;
     private String name;
     private double price;
     private String imgURL;
@@ -11,11 +11,11 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

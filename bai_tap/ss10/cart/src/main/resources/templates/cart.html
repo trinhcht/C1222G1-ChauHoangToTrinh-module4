@@ -26,20 +26,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="productDTO: ${cart.productMap}">
-            <td scope="row"><img th:src="${productDTO.key.imgURL}" alt="" height="140px"></td>
+        <tr th:each="product: ${cart.productMap}">
+            <td scope="row"><img th:src="${product.key.imgURL}" alt="" height="140px"></td>
             <td class="ps-3">
-                <p th:text="${productDTO.key.name}"></p>
-                <p>Đơn giá: <span th:text="${#numbers.formatCurrency(productDTO.key.price)}"></span></p>
+                <p th:text="${product.key.name}"></p>
+                <p>Đơn giá: <span th:text="${#numbers.formatCurrency(product.key.price)}"></span></p>
                 <p>Số lượng
-                    <a class="btn btn-primary" id="increase_button"
-                       th:href="@{/product/add(id = ${productDTO.getKey().id}, action='show')}"
-                       th:text="${'+'}" style="text-decoration: none">
-                    </a>
-                    <span th:text="${productDTO.value}"></span>
                     <a class="btn btn-primary" id="decrease_button"
-                       th:href="@{/product/decrease(id = ${productDTO.getKey().id}, action='show1')}"
+                       th:href="@{/product/decrease/__${product.getKey().id}__}"
                        th:text="${'-'}" style="text-decoration: none">
+                    </a>
+
+                    <span th:text="${product.value}"></span>
+
+                    <a class="btn btn-primary" id="increase_button"
+                       th:href="@{/product/add/__${product.getKey().id}__(action='show')}"
+                       th:text="${'+'}" style="text-decoration: none">
                     </a>
                 </p>
             </td>
@@ -55,6 +57,7 @@
         style: 'currency',
         currency: 'VND',
     });
+    debugger
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
