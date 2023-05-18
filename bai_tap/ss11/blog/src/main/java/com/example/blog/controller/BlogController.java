@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blog")
@@ -21,7 +22,11 @@ public class BlogController {
 
     @GetMapping("")
     public ResponseEntity<List<Blog>> showList() {
-        return new ResponseEntity<>(blogService.findAll(), HttpStatus.OK);
+        List<Blog> blogList = blogService.findAll();
+        if(blogList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(blogList, HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -33,12 +38,16 @@ public class BlogController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Blog> delete(@PathVariable int id) {
         blogService.delete(id);
-        return new ResponseEntity<>(blogService.findById(id), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Blog> findById(@PathVariable int id) {
-        return new ResponseEntity<>(blogService.findById(id), HttpStatus.OK);
+        Optional<Blog> blog = blogService.findById(id);
+        if (!blog.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(blog.get(), HttpStatus.OK);
     }
 
 }

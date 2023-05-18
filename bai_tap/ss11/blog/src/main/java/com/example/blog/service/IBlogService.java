@@ -2,6 +2,7 @@ package com.example.blog.service;
 
 import com.example.blog.model.Blog;
 import java.util.List;
+import java.util.Optional;
 
 public interface IBlogService {
 
@@ -9,7 +10,7 @@ public interface IBlogService {
 
     void save(Blog blog);
 
-    Blog findById(Integer id);
+    Optional<Blog> findById(int id);
 
     void delete(Integer id);
 
