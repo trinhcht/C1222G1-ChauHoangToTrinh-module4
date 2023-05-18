@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface IBlogRepository extends JpaRepository<Blog, Integer> {
-    @Query(value = "select * from blogs where name_blog like concat('%',:name_blog,'%')", nativeQuery = true)
-    List<Blog> findByName(@Param("name_blog") String name);
+    @Query(value = "select * from blogs join type_of_blog on type_of_blog.id_type_of_blog = blogs.id_type_of_blog where name_blog like concat('%', :name,'%')", nativeQuery = true)
+    List<Blog> findByName(String name);
 
     @Query(value = "select * from blogs where id_type_of_blog = :id_type_of_blog", nativeQuery = true)
     List<Blog> findByType(@Param("id_type_of_blog") Integer id);
