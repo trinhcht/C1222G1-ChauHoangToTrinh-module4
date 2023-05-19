@@ -24,7 +24,7 @@
     </th:block>
     <tbody id="showList"></tbody>
 </table>
-<button onclick="showList()">Read More</button>
+<button onclick="showList()">Load More</button>
 <script>
     let page =0;
     function showList() {
@@ -53,8 +53,8 @@
         });
     }
 
-    function searchByName(name) {
-        name = $("#nameBlog").val();
+    function searchByName() {
+        let name = $("#nameBlog").val();
         $.ajax({
             url: `http://localhost:8080/blog/search/${name}`,
             type: "GET",
